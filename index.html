@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Conversion</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+  <style>
+    body{
+      margin-top: 70px;
+      background: #333;
+      color: #fff;
+    }
+
+  </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h1 class="display-4 text-center mb-3">
+            Weight Converter
+          </h1>
+          <form>
+            <div class="form-group">
+              <input
+              id="kgInput"
+              type="number"
+              class="form-control form-control-lg" placeholder="Enter weight in kilogram">
+            </div>
+          </form>
+          <div id="output">
+            <div class="card card-primary mb-2">
+              <div class="card-block">
+                <h4>Stone:</h4>
+                <div id="stoneOutput"></div>
+              </div>
+            </div>
+
+            <div class="card card-success mb-2">
+              <div class="card-block">
+                <h4>Pounds:</h4>
+                <div id="lbsOutput"></div>
+              </div>
+            </div>
+
+            <div class="card card-danger mb-5">
+              <div class="card-block">
+                <h4>Ounces:</h4>
+                <div id="ozOutput"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <h1 class="text-center md-3 display-4 mb-3">Height Converter</h1>
+          <form>
+            <div class="form-group">
+              <input
+              id="cmInput"
+              type="number"
+              class="form-control form-control-lg"
+              placeholder="Enter height in cm">
+            </div>
+          </form>
+          <div id="output">
+            <div class="card card-primary mb-2">
+              <div class="card-block">
+                <h4>Anglo:</h4>
+                <div id="angloOutput"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+    //Weight input event listener
+    document.getElementById('kgInput').addEventListener('input', function (e){
+      let kg = e.target.value;
+      let lbs = kg * 0.45359237;
+      let grams = kg * 1000;
+      let oz = kg * 35.27396194958;
+      let stone = kg / 6.35029318;
+      document.getElementById('lbsOutput').innerHTML = lbs;
+      document.getElementById('stoneOutput').innerHTML = stone;
+      document.getElementById('ozOutput').innerHTML = oz;
+    });
+
+    //Height input event listener
+    document.getElementById('cmInput').addEventListener('input',  function (e) {
+      let cm = e.target.value;
+      let m = cm / 100;
+      let realFeet = ((cm*0.393700) / 12);
+      let feet = Math.floor(realFeet);
+      let inches = Math.round((realFeet - feet) * 12);
+      let angloHeightString = feet + '" ' + inches + '\'';
+
+      document.getElementById('angloOutput').innerHTML = angloHeightString;
+    });
+    </script>
+  </body>
+</html>
